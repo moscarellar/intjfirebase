@@ -1,0 +1,17 @@
+.jumbotron {
+    background-color: #f8f9fa;
+    border-radius: 0.3rem;
+}
+
+.display-4 {
+    color: #343a40;
+}
+
+.lead {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: #343a40;
+    border: none;
+}
