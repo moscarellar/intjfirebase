@@ -1,0 +1,37 @@
+.carousel-container .carousel-item {
+    height: 400px; /* Adjust this value to set the desired height */
+  }
+  
+  .carousel-container .d-block {
+    max-width: 20%;
+    max-height: 20%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .carousel-container {
+    max-width: 20%; /* Adjust this value to set the desired width */
+    margin: 0 auto;
+  }
+  
+  /* Your existing styles, if any */
+  .jumbotron {
+    background-color: #f8f9fa;
+    border-radius: 0.3rem;
+  }
+  
+  .display-4 {
+    color: #343a40;
+  }
+  
+  .lead {
+    color: #6c757d;
+  }
+  
+  .btn-primary {
+    background-color: #343a40;
+    border: none;
+  }
+  

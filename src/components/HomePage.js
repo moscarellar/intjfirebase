@@ -14,9 +14,9 @@ const HomePage = () => {
           <p>Discover your unique myth through our Jungian perspective and synchronicity services.</p>
           <p>Book Now for:</p>
           <ul>
-            <li><a href="#">Tarot Readings</a></li>
-            <li><a href="#">African Cawries Divination</a></li>
-          </ul>
+  <li><Link to="/tarot-readings">Tarot Readings</Link></li>
+  <li><Link to="/african-cawries-divination">African Cawries Divination</Link></li>
+</ul>
           <p>Got questions? Check out our FAQ page.</p>
           <p>Satisfy your INTJ curiosity and embark on a transformative journey to self-discovery today!</p>
         </div>
