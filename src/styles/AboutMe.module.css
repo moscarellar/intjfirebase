@@ -1,0 +1,26 @@
+.aboutMeContainer {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .bioSection {
+    background-color: #ffffff; /* Optional: background color for the bio section */
+  }
+  
+  .cvSection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .cvMargin {
+    padding: 20px;
+    background-color: #f4f4f4; /* Optional: background color for the highlights section */
+    border-radius: 10px;
+  }
+  
+  .educationHighlights {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
