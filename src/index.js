@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './i18n.js';
+import dotenv from 'dotenv';  // Import dotenv
+dotenv.config();             // Load environment variables
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
