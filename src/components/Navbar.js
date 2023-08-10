@@ -44,7 +44,7 @@ function NavigationBar() {
               <Nav.Link as={Link} to="/signup">{t('signup')}</Nav.Link>
             </>
           )}
-          <Nav.Link as={Link} to="/blog">{t('blog')}</Nav.Link>
+          {/* <Nav.Link as={Link} to="/blog">{t('blog')}</Nav.Link> */}
           <Nav.Link as={Link} to="/book">{t('book')}</Nav.Link>
           <Nav.Link as={Link} to="/FAQ">{t('faq')}</Nav.Link>
           <Nav.Link as={Link} to="/AboutMe">{t('aboutMe')}</Nav.Link>

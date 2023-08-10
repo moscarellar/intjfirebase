@@ -5,6 +5,7 @@ import { bookingpage } from "./translations/bookingpage"; // Import bookingpage 
 import aboutme from "./translations/aboutme";
 import loginpage from "./translations/loginpage";
 import signuppage from "./translations/signuppage";
+import homepageTranslations from "./translations/homepageTranslations";
 
 const resources = {
   en: {
@@ -21,15 +22,16 @@ const resources = {
       ...aboutme.en,
       ...loginpage.en,
       ...signuppage.en,
+      ...homepageTranslations.en,
     },
   },
   pt: {
     translation: {
-      home: "Início",
+      home: "INTJ Growth",
       login: "Entrar",
       signup: "Cadastrar",
       blog: "Blog",
-      book: "Livro",
+      book: "Agendament de Consultas",
       faq: "Perguntas Frequentes",
       aboutMe: "Sobre Mim",
       logOut: "Sair",
@@ -37,15 +39,16 @@ const resources = {
       ...aboutme.pt, // Include Portuguese translations for AboutMe
       ...loginpage.pt,
       ...signuppage.pt,
+      ...homepageTranslations.pt,
     },
   },
   es: {
     translation: {
-      home: "Inicio",
+      home: "INTJ Growth",
       login: "Iniciar Sesión",
       signup: "Registrarse",
       blog: "Blog",
-      book: "Libro",
+      book: "Pedir una Consulta",
       faq: "Preguntas Frecuentes",
       aboutMe: "Sobre Mí",
       logOut: "Cerrar Sesión",
@@ -53,6 +56,7 @@ const resources = {
       ...aboutme.es, 
       ...loginpage.es,
       ...signuppage.es,
+      ...homepageTranslations.es,
     },
   },
 };

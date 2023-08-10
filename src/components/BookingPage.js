@@ -1,49 +1,72 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
-import styles from '../styles/BookingPage.module.css';
-
-import { useTranslation } from 'react-i18next'; // Import useTranslation hook
-
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase'; // Adjust path as necessary
+import { collection, getDocs } from 'firebase/firestore';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from 'react-i18next';
 
 function BookingPage() {
-  const { t } = useTranslation(); // Use the useTranslation hook
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [message, setMessage] = useState('');
+    const [services, setServices] = useState([]);
+    const [selectedService, setSelectedService] = useState(''); // Initialize with an empty string
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState(new Date());
+    const { t } = useTranslation();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Booking details:', { name, email, date, time });
-    setMessage(t('bookingSubmitted'));
-  };
+    useEffect(() => {
+        const fetchData = async () => {
+            const servicesCollection = await getDocs(collection(db, 'services'));
+            setServices(servicesCollection.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+        };
 
-  return (
-    <Container className={styles.container}>
-      <h1 className={styles.h1}>{t('bookingTitle')}</h1>
-      {message && <Alert variant="success" className={styles.alert}>{message}</Alert>}
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name" className={styles['form-group']}>
-          <Form.Label>{t('nameLabel')}</Form.Label>
-          <Form.Control type="text" placeholder={t('namePlaceholder')} value={name} onChange={(e) => setName(e.target.value)} required />
-        </Form.Group>
-        <Form.Group controlId="email" className={styles['form-group']}>
-          <Form.Label>{t('emailLabel')}</Form.Label>
-          <Form.Control type="email" placeholder={t('emailPlaceholder')} value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </Form.Group>
-        <Form.Group controlId="date" className={styles['form-group']}>
-          <Form.Label>{t('dateLabel')}</Form.Label>
-          <Form.Control type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-        </Form.Group>
-        <Form.Group controlId="time" className={styles['form-group']}>
-          <Form.Label>{t('timeLabel')}</Form.Label>
-          <Form.Control type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
-        </Form.Group>
-        <Button variant="primary" type="submit" className={styles.button}>{t('bookNowButton')}</Button>
-      </Form>
-    </Container>
-  );
+        fetchData();
+    }, []);
+
+    const handleBooking = () => {
+        console.log('Selected Service:', selectedService);
+        console.log('Selected Date:', selectedDate);
+        console.log('Selected Time:', selectedTime);
+    };
+
+    return (
+        <div>
+            <h1>{t('bookingTitle')}</h1>
+
+            {/* Service Selector */}
+            <div>
+                <label>{t('selectService')}</label>
+                <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>
+                    <option value="" disabled>{t('selectAService')}</option>
+                    {services.map(service => (
+                        <option key={service.id} value={service.id}>
+                            {service.name[t('language')]}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            {/* Date Picker */}
+            <div>
+                <label>{t('selectDate')}</label>
+                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} />
+            </div>
+
+            {/* Time Picker */}
+            <div>
+                <label>{t('selectTime')}</label>
+                <DatePicker
+                    selected={selectedTime}
+                    onChange={(time) => setSelectedTime(time)}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption={t('time')}
+                    dateFormat="h:mm aa"
+                />
+            </div>
+
+            <button onClick={handleBooking}>{t('bookNow')}</button>
+        </div>
+    );
 }
 
 export default BookingPage;

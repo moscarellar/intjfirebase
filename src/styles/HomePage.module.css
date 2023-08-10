@@ -1,6 +1,32 @@
-.jumbotron {
-    background-color: #f8f9fa;
-    border-radius: 0.3rem;
+body {
+    margin: 0;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;  
+    align-items: center;  
+}
+
+.home {
+    flex: 1;  
+    width: 100%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.home-page {
+    width: 80%;
+    padding: 20px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;  /* Ensure the content inside .home-page stacks vertically */
+}
+
+#hero-photo {
+    height: 60vh;
+    background-size: cover;  /* This ensures the image covers the entire div */
+    background-repeat: no-repeat;  /* This ensures the image does not repeat */
+    background-position: center;  /* This centers the image */
 }
 
 .display-4 {
@@ -11,7 +37,25 @@
     color: #6c757d;
 }
 
-.btn-primary {
-    background-color: #343a40;
-    border: none;
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
+
+.card {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .cardsContainer {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
 }
